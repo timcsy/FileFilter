@@ -52,7 +52,9 @@ D2 20190913 01:23 20190913 08:19
 
 ### 執行app.py
 Windows: 點開start.bat
+
 Mac: 打開終端機，切換到當前工作目錄
+
 輸入以下指令並Enter
 ```
 python app.py
