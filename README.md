@@ -11,7 +11,7 @@ FileFilter （睡眠與空氣品質檔案資料過濾）
 教學(Windows)：https://ericjhang.github.io/archives/ad5450f3.html
 
 ### 安裝套件
-在終端機輸入：
+在終端機(在Windows為命令提示字元，開始->所有程式->附屬應用程式->命令提示字元)輸入：
 ```
 pip install pandas xlrd
 ```
