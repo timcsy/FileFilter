@@ -377,7 +377,7 @@ def cut(info):
         header of T: ['name','temperature (degree Celsius)','time']
         header of H: ['time','HR','temp','move']
         header of A: ['time','X_Axis','Y_Axis','Z_Axis']
-        header of A_TL: ['time','X_Axis','Y_Axis','Z_Axis','temp (T = (counts – 171) / 3.142)','lux (Lux = 10(counts/341))']
+        header of A_TL: ['time','X_Axis','Y_Axis','Z_Axis','lux (Lux = 10(counts/341))','temp (T = (counts – 171) / 3.142)']
         header of E_O: ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc']
         header of E_I: ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc']
         header of E: ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc']
@@ -396,7 +396,7 @@ def cut(info):
         'T': ['name','temperature (degree Celsius)','time'],
         'H': ['time','HR','temp','move'],
         'A': ['time','X_Axis','Y_Axis','Z_Axis'],
-        'A_TL': ['time','X_Axis','Y_Axis','Z_Axis','temp (T = (counts – 171) / 3.142)','lux (Lux = 10(counts/341))'],
+        'A_TL': ['time','X_Axis','Y_Axis','Z_Axis','lux (Lux = 10(counts/341))','temp (T = (counts – 171) / 3.142)'],
         'E_O': ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc'],
         'E_I': ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc'],
         'E': ['decice','time','pm25','pm10','pm1','t','h','co2','co','hcho','tvoc'],
@@ -516,10 +516,10 @@ def merge(infos, output_root, seconds=1, microseconds=0, minutes=0, hours=0, day
     df = None # 要輸出的表格
     # D1-D3 使用的欄位名稱
     if info['day'] == 'D1' or info['day'] == 'D2' or info['day'] == 'D3':
-        df = pd.DataFrame(columns=['Time', 'temp_T', 'HR_H', 'temp_H', 'move_H' , 'X_Axis_A', 'Y_Axis_A', 'Z_Axis_A', 'temp_A (T = (counts – 171) / 3.142)', 'lux_A (Lux = 10(counts/341))', 'pm25_E_O', 'pm10_E_O', 'pm1_E_O', 't_E_O', 'h_E_O', 'co2_E_O', 'co_E_O', 'hcho_E_O', 'tvoc_E_O', 'pm25_E_I', 'pm10_E_I', 'pm1_E_I', 't_E_I', 'h_E_I', 'co2_E_I', 'co_E_I', 'hcho_E_I', 'tvoc_E_I', 'CO2_Air', 'PM1_Air', 'PM2.5_Air', 'PM10_Air', 'PM0.3_Air', 'PM0.5_Air', 'PM1.0_Air', 'PM2.5_Air', 'PM5.0_Air', 'PM10_Air'])
+        df = pd.DataFrame(columns=['Time', 'temp_T', 'HR_H', 'temp_H', 'move_H' , 'X_Axis_A', 'Y_Axis_A', 'Z_Axis_A', 'lux_A (Lux = 10(counts/341))', 'temp_A (T = (counts – 171) / 3.142)', 'pm25_E_O', 'pm10_E_O', 'pm1_E_O', 't_E_O', 'h_E_O', 'co2_E_O', 'co_E_O', 'hcho_E_O', 'tvoc_E_O', 'pm25_E_I', 'pm10_E_I', 'pm1_E_I', 't_E_I', 'h_E_I', 'co2_E_I', 'co_E_I', 'hcho_E_I', 'tvoc_E_I', 'CO2_Air', 'PM1_Air', 'PM2.5_Air', 'PM10_Air', 'PM0.3_Air', 'PM0.5_Air', 'PM1.0_Air', 'PM2.5_Air', 'PM5.0_Air', 'PM10_Air'])
     # D4-D6 使用的欄位名稱
     elif info['day'] == 'D4' or info['day'] == 'D5' or info['day'] == 'D6':
-        df = pd.DataFrame(columns=['Time', 'temp_T', 'HR_H', 'temp_H', 'move_H' , 'X_Axis_A', 'Y_Axis_A', 'Z_Axis_A', 'temp_A (T = (counts ??171) / 3.142)', 'lux_A (Lux = 10(counts/341))', 'pm25_E', 'pm10_E', 'pm1_E', 't_E', 'h_E', 'co2_E', 'co_E', 'hcho_E', 'tvoc_E'])
+        df = pd.DataFrame(columns=['Time', 'temp_T', 'HR_H', 'temp_H', 'move_H' , 'X_Axis_A', 'Y_Axis_A', 'Z_Axis_A', 'lux_A (Lux = 10(counts/341))', 'temp_A (T = (counts ??171) / 3.142)', 'pm25_E', 'pm10_E', 'pm1_E', 't_E', 'h_E', 'co2_E', 'co_E', 'hcho_E', 'tvoc_E'])
     else:
         return
 
@@ -554,6 +554,8 @@ def merge(infos, output_root, seconds=1, microseconds=0, minutes=0, hours=0, day
             df = df.append(pd.Series(row, index=df.columns), ignore_index=True)
 
         time += step
+
+    df['temp_H'] /= 100.0
 
     # 輸出合併後檔案，附上標題列
     df.to_csv(output_path, index=False, doublequote=False)

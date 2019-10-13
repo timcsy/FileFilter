@@ -114,7 +114,7 @@ time,X_Axis,Y_Axis,Z_Axis
 出現在D1-D6
 以下為逗號分隔的欄位名稱
 ```
-time,X_Axis,Y_Axis,Z_Axis,temp (T = (counts – 171) / 3.142),lux (Lux = 10(counts/341))
+time,X_Axis,Y_Axis,Z_Axis,lux (Lux = 10(counts/341)),temp (T = (counts – 171) / 3.142)
 ```
 
 ### EDIMAX
@@ -154,10 +154,10 @@ time,CO2,PM1,PM2.5,PM10,PM0.3 cnt,PM0.5 cnt,PM1.0 cnt,PM2.5 cnt,PM5.0 cnt,PM10 c
 
 以下為D1-D3以逗號分隔的欄位名稱
 ```
-Time,temp_T,HR_H,temp_H,move_H,X_Axis_A,Y_Axis_A,Z_Axis_A,temp_A (T = (counts – 171) / 3.142),lux_A (Lux = 10(counts/341)),pm25_E_O,pm10_E_O,pm1_E_O,t_E_O,h_E_O,co2_E_O,co_E_O,hcho_E_O,tvoc_E_O,pm25_E_I,pm10_E_I,pm1_E_I,t_E_I,h_E_I,co2_E_I,co_E_I,hcho_E_I,tvoc_E_I,CO2_Air,PM1_Air,PM2.5_Air,PM10_Air,PM0.3_Air,PM0.5_Air,PM1.0_Air,PM2.5_Air,PM5.0_Air,PM10_Air
+Time,temp_T,HR_H,temp_H,move_H,X_Axis_A,Y_Axis_A,Z_Axis_A,lux_A (Lux = 10(counts/341)),temp_A (T = (counts – 171) / 3.142),pm25_E_O,pm10_E_O,pm1_E_O,t_E_O,h_E_O,co2_E_O,co_E_O,hcho_E_O,tvoc_E_O,pm25_E_I,pm10_E_I,pm1_E_I,t_E_I,h_E_I,co2_E_I,co_E_I,hcho_E_I,tvoc_E_I,CO2_Air,PM1_Air,PM2.5_Air,PM10_Air,PM0.3_Air,PM0.5_Air,PM1.0_Air,PM2.5_Air,PM5.0_Air,PM10_Air
 ```
 
 以下為D4-D6以逗號分隔的欄位名稱
 ```
-Time,temp_T,HR_H,temp_H,move_H,X_Axis_A,Y_Axis_A,Z_Axis_A,temp_A (T = (counts ??171) / 3.142),lux_A (Lux = 10(counts/341)),pm25_E,pm10_E,pm1_E,t_E,h_E,co2_E,co_E,hcho_E,tvoc_E
+Time,temp_T,HR_H,temp_H,move_H,X_Axis_A,Y_Axis_A,Z_Axis_A,lux_A (Lux = 10(counts/341)),temp_A (T = (counts ??171) / 3.142),pm25_E,pm10_E,pm1_E,t_E,h_E,co2_E,co_E,hcho_E,tvoc_E
 ```
